@@ -76,8 +76,14 @@ class App extends Component {
         {loginOrLogoutButton}
         {onAndOffButton}
         <button onClick={(e) => this.deleteRow('1', e)}>Delete Row</button>
-        <button onClick={this.deleteRow.bind(this,'2', 3)}>Delete Row</button>
+        <button onClick={this.deleteRow.bind(this,'2')}>Delete Row</button>
+
+
+        <div style={{flexDirection:'row'}}>
+          <NumberList numbers={['Y','B','0']} />
+        </div>
       </div>
+
     );
   }
 }
@@ -124,6 +130,20 @@ function BaseButton(props) {
     }>
       {props.title}
     </button>
+  );
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map(
+    (number) => (
+      <li key={number.toString()}>
+      {number}
+      </li>
+    )
+  );
+  return (
+    <ol>{listItems}</ol>
   );
 }
 
